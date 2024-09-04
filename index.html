@@ -123,6 +123,7 @@
             background-color: rgba(0, 0, 0, 0.9);
         }
         .modal-content {
+            position: relative;
             margin: auto;
             display: block;
             width: 80%;
@@ -147,6 +148,25 @@
             color: #bbb;
             text-decoration: none;
             cursor: pointer;
+        }
+        .modal-control {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .modal-control button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+        .modal-control button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }
         footer {
             margin-top: 20px;
@@ -201,6 +221,10 @@
         <div class="modal-content">
             <img id="modalImg" src="">
         </div>
+        <div class="modal-control">
+            <button id="modalPrevBtn">&#10094;</button>
+            <button id="modalNextBtn">&#10095;</button>
+        </div>
     </div>
     
     <footer>
@@ -231,16 +255,36 @@
 
         function openModal(img) {
             document.getElementById("myModal").style.display = "block";
-            document.getElementById("modalImg").src = img.src;
+            const modalImg = document.getElementById("modalImg");
+            modalImg.src = img.src;
+            currentIndex = Array.from(document.querySelectorAll('.carousel-item img')).indexOf(img);
         }
 
         function closeModal() {
             document.getElementById("myModal").style.display = "none";
         }
 
+        function showModalSlide() {
+            const slides = document.querySelectorAll('.carousel-item img');
+            if (currentIndex >= slides.length) currentIndex = 0;
+            if (currentIndex < 0) currentIndex = slides.length - 1;
+
+            const modalImg = document.getElementById("modalImg");
+            modalImg.src = slides[currentIndex].src;
+        }
+
+        document.getElementById('modalNextBtn').addEventListener('click', () => {
+            currentIndex++;
+            showModalSlide();
+        });
+
+        document.getElementById('modalPrevBtn').addEventListener('click', () => {
+            currentIndex--;
+            showModalSlide();
+        });
+
         // Initialize the carousel
         showSlides();
     </script>
 </body>
 </html>
-
