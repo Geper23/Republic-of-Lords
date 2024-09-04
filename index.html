@@ -5,118 +5,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Republic of Lords - Realistic pack 1.0</title>
     <style>
-        /* Styl pro stránku */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
+            background-image: url('Grand-Theft-Auto-San-Andreas-875.jpg');
+            background-size: cover;
             margin: 0;
             padding: 0;
-        }
-
-        h1, h2 {
+            color: white;
             text-align: center;
         }
-
         .container {
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 50px auto;
             padding: 20px;
-            max-width: 900px;
-            margin: 0 auto;
+            border-radius: 10px;
+            width: 60%;
         }
-
+        .button {
+            background-color: #f39c12;
+            color: black;
+            padding: 15px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #e67e22;
+        }
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            color: #f39c12;
+            text-shadow: 2px 2px black;
+        }
+        h2 {
+            color: #f39c12;
+            text-shadow: 1px 1px black;
+        }
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+        }
+        a {
+            color: #f39c12;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
         .gallery {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-wrap: wrap;
-            gap: 10px;
+            margin-top: 30px;
         }
-
         .gallery img {
-            max-width: 100%;
+            width: 300px;
             height: auto;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        /* Styl pro modal */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9);
-        }
-
-        .modal-content {
-            display: block;
-            margin: 10% auto;
-            max-width: 80%;
-        }
-
-        .modal-content img {
-            width: 100%;
-            height: auto;
-        }
-
-        .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #fff;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .close:hover,
-        .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
+            margin: 10px;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
     <h1>Republic of Lords<br>Realistic pack 1.0</h1>
     <div class="container">
-        <h2>Galerie</h2>
-        <div class="gallery">
-            <img src="Schreenshot 1.jpg" alt="Screenshot 1" onclick="openModal(this)">
-            <img src="Schreenshot 2.png" alt="Screenshot 2" onclick="openModal(this)">
-            <img src="Schreenshot 3.png" alt="Screenshot 3" onclick="openModal(this)">
-        </div>
-    </div>
+        <h2>O Modpacku</h2>
+        <p>Republic of Lords - Realistic pack 1.0 je rozsáhlý modpack pro GTA San Andreas, který zachovává věrnost původní hře, ale zároveň ji v mnoha aspektech vylepšuje. Tento modpack mění spoustu textur ve hře a všechny jsou v HD kvalitě, přičemž zůstávají věrné originálu.</p>
+        <p>Všechna auta, motorky, letadla a lodě jsou přepracované do HD verze, ale stále si zachovávají svůj původní vzhled. Modpack také upravuje chování policie, přidává nové gangy a vylepšuje chování NPC. Kompletně všechny postavy, které potkáš na ulici, mají nové HD modely, které jsou věrné originálu. Dále jsou předělané zvuky aut a motocyklů, což přidává na realistickém zážitku. Provoz na silnici je intenzivnější a rovněž je zvýšen výskyt NPC postav, což činí hru živější.</p>
+        <p>Navíc je v modpacku funkční taxi služba, která ti umožní rychlý přesun po městě. Zbraně byly kompletně přetexturovány a jejich zvuky jsou mnohem realističtější, což přispívá k lepšímu hernímu zážitku.</p>
+        
+        <a href="modlist.html" class="button">Zobrazit seznam modů</a>
 
-    <!-- Modal pro zobrazení obrázku ve velké velikosti -->
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div class="modal-content">
-            <img id="modalImage" src="" alt="Zvětšený obrázek">
-        </div>
+        <h2>Stáhnout Modpack</h2>
+        <p>Modpack můžete stáhnout z následujícího odkazu: <a href="https://mega.nz/folder/QoZ3jIAR#_OBsRP4v3Xyggh9IVAeZxQ" class="button">Stáhnout</a></p>
     </div>
-
+    
+    <div class="gallery">
+        <img src="Screenshot 1.jpg" alt="Screenshot 1">
+        <img src="Screenshot 2.png" alt="Screenshot 2">
+        <img src="Screenshot 3.png" alt="Screenshot 3">
+    </div>
+    
     <footer>
         <p>© 2024 Republic of Lords. Všechna práva vyhrazena.</p>
     </footer>
-
-    <script>
-        function openModal(imgElement) {
-            var modal = document.getElementById("myModal");
-            var modalImg = document.getElementById("modalImage");
-
-            modal.style.display = "block";
-            modalImg.src = imgElement.src;
-        }
-
-        function closeModal() {
-            var modal = document.getElementById("myModal");
-            modal.style.display = "none";
-        }
-    </script>
 </body>
 </html>
-
