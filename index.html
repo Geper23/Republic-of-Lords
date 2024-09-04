@@ -58,6 +58,18 @@
         a:hover {
             text-decoration: underline;
         }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+        .gallery img {
+            width: 300px;
+            height: auto;
+            margin: 10px;
+            border-radius: 10px;
+        }
     </style>
 </head>
 <body>
@@ -71,8 +83,15 @@
         <a href="modlist.html" class="button">Zobrazit seznam modů</a>
 
         <h2>Stáhnout Modpack</h2>
-        <p>Modpack můžete stáhnout z následujícího odkazu: <a href="#">https://mega.nz/folder/QoZ3jIAR#_OBsRP4v3Xyggh9IVAeZxQ</a></p>
+        <p>Modpack můžete stáhnout z následujícího odkazu: <a href="https://mega.nz/folder/QoZ3jIAR#_OBsRP4v3Xyggh9IVAeZxQ" class="button">Stáhnout</a></p>
     </div>
+    
+    <div class="gallery">
+        <img src="image1.png" alt="Screenshot 1">
+        <img src="image2.png" alt="Screenshot 2">
+        <img src="image3.png" alt="Screenshot 3">
+    </div>
+    
     <footer>
         <p>© 2024 Republic of Lords. Všechna práva vyhrazena.</p>
     </footer>
