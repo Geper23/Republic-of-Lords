@@ -13,7 +13,40 @@
             padding: 0;
             color: white;
             text-align: center;
+            display: flex;
         }
+        
+        .sidebar {
+            width: 200px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            position: fixed;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: auto;
+        }
+
+        .sidebar a {
+            color: #f39c12;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .sidebar a:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        .content {
+            margin-left: 220px;
+            padding: 20px;
+            width: calc(100% - 240px);
+        }
+
         .container {
             background-color: rgba(0, 0, 0, 0.7);
             margin: 50px auto;
@@ -21,16 +54,19 @@
             border-radius: 10px;
             width: 60%;
         }
+
         h1 {
             font-size: 3em;
             margin-bottom: 20px;
             color: #f39c12;
             text-shadow: 2px 2px black;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
         }
+
         li {
             background-color: #2c3e50;
             margin: 10px 0;
@@ -39,190 +75,204 @@
             font-size: 1.2em;
             text-align: left;
         }
+
         .mod-description {
             font-size: 0.9em;
             color: #bdc3c7;
             margin-top: 5px;
         }
+
+        footer {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+        }
     </style>
 </head>
 <body>
-    <h1>Soupis modů</h1>
-    <div class="container">
-        <ul>
-            <li>
-                <strong>Armour</strong>
-                <div class="mod-description">Armor je nyní vidět.</div>
-            </li>
-            <li>
-                <strong>Atmosphere Interface Pack</strong>
-                <div class="mod-description">Vylepšuje atmosféru hry s novým uživatelským rozhraním.</div>
-            </li>
-            <li>
-                <strong>BSOR - American Dream</strong>
-                <div class="mod-description">Realistické silniční vozidla v HD kvalitě.</div>
-            </li>
-            <li>
-                <strong>CJ Remade</strong>
-                <div class="mod-description">Nový model pro CJ s vylepšenými detaily a texturami.</div>
-            </li>
-            <li>
-                <strong>Clever Trams</strong>
-                <div class="mod-description">Inteligentní tramvaje s realistickým pohybem po městě.</div>
-            </li>
-            <li>
-                <strong>ColorMod</strong>
-                <div class="mod-description">Upravuje barevné schéma hry pro realistický vzhled.</div>
-            </li>
-            <li>
-                <strong>cz font fix</strong>
-                <div class="mod-description">Opravuje chyby českého fontu ve hře.</div>
-            </li>
-            <li>
-                <strong>DriveMod</strong>
-                <div class="mod-description">Zlepšuje fyziku jízdy a chování vozidel.</div>
-            </li>
-            <li>
-                <strong>EnhancerFX</strong>
-                <div class="mod-description">Vizuální efekty vylepšující osvětlení a stíny.</div>
-            </li>
-            <li>
-                <strong>Faithful Weapons Pack - Lite</strong>
-                <div class="mod-description">Zbraně věrné originálním modelům v HD kvalitě.</div>
-            </li>
-            <li>
-                <strong>Faithful Weapons Sounds Pack</strong>
-                <div class="mod-description">Vylepšuje zvuky zbraní pro realističtější zážitek.</div>
-            </li>
-            <li>
-                <strong>Fake_Interior</strong>
-                <div class="mod-description">Falešné interiéry pro vytvoření dojmu otevřených budov.</div>
-            </li>
-            <li>
-                <strong>HD GTA Aircraft</strong>
-                <div class="mod-description">HD modely všech letadel ve hře.</div>
-            </li>
-            <li>
-                <strong>HD GTA Bikes</strong>
-                <div class="mod-description">HD modely všech motorek ve hře.</div>
-            </li>
-            <li>
-                <strong>HD GTA Vehicles</strong>
-                <div class="mod-description">HD modely všech vozidel ve hře.</div>
-            </li>
-            <li>
-                <strong>HD Water tower</strong>
-                <div class="mod-description">HD model vodní věže ve městě.</div>
-            </li>
-            <li>
-                <strong>HQ Cutscenes cars</strong>
-                <div class="mod-description">Vysokokvalitní modely aut ve filmových scénách.</div>
-            </li>
-            <li>
-                <strong>Insult Mod</strong>
-                <div class="mod-description">Přidává nové urážky a dialogy mezi NPC postavami.</div>
-            </li>
-            <li>
-                <strong>Interiors Retextured Mipmapped</strong>
-                <div class="mod-description">HD retexturace interiérů s mipmappingem.</div>
-            </li>
-            <li>
-                <strong>LightSunnyGraphics</strong>
-                <div class="mod-description">Vylepšuje grafiku během slunečného počasí.</div>
-            </li>
-            <li>
-                <strong>MixSets</strong>
-                <div class="mod-description">Konfigurační nástroj pro úpravu různých aspektů hry.</div>
-            </li>
-            <li>
-                <strong>New Sex Shop V2</strong>
-                <div class="mod-description">Vylepšený model a interiér obchodu se sexuálními pomůckami.</div>
-            </li>
-            <li>
-                <strong>OE Mod</strong>
-                <div class="mod-description">Optimalizace a rozšíření pro lepší herní zážitek.</div>
-            </li>
-            <li>
-                <strong>Original Peds Vary</strong>
-                <div class="mod-description">Rozmanitější NPC postavy s různými modely.</div>
-            </li>
-            <li>
-                <strong>PedFuncs</strong>
-                <div class="mod-description">Funkce a chování NPC postav vylepšené pro realismus.</div>
-            </li>
-            <li>
-                <strong>PedSkills</strong>
-                <div class="mod-description">Vylepšení dovedností a schopností NPC postav.</div>
-            </li>
-            <li>
-                <strong>Pre-lighting Fixes Pack</strong>
-                <div class="mod-description">Oprava předosvětlení modelů a textur.</div>
-            </li>
-            <li>
-                <strong>propsremake</strong>
-                <div class="mod-description">HD modely různých předmětů ve hře.</div>
-            </li>
-            <li>
-                <strong>Ragdoll Bullet Physics</strong>
-                <div class="mod-description">Realistická fyzika postav při zásahu kulkou.</div>
-            </li>
-            <li>
-                <strong>Real Traffic Fix</strong>
-                <div class="mod-description">Oprava a vylepšení dopravní situace ve hře.</div>
-            </li>
-            <li>
-                <strong>Retextured LaPetrol</strong>
-                <div class="mod-description">HD retexturace čerpací stanice La Petrol.</div>
-            </li>
-            <li>
-                <strong>retextur 1</strong>
-                <div class="mod-description">První sada HD retexturace různých objektů ve hře.</div>
-            </li>
-            <li>
-                <strong>retextur 2</strong>
-                <div class="mod-description">Druhá sada HD retexturace různých objektů ve hře.</div>
-            </li>
-            <li>
-                <strong>retextur 3</strong>
-                <div class="mod-description">Třetí sada HD retexturace různých objektů ve hře.</div>
-            </li>
-            <li>
-                <strong>retextur 4</strong>
-                <div class="mod-description">Čtvrtá sada HD retexturace různých objektů ve hře.</div>
-            </li>
-            <li>
-                <strong>SA Cutscene Characters (ESRGAN)</strong>
-                <div class="mod-description">HD modely postav pro filmové scény.</div>
-            </li>
-            <li>
-                <strong>Skin Tweaks</strong>
-                <div class="mod-description">Úpravy a vylepšení skinů postav.</div>
-            </li>
-            <li>
-                <strong>Taxi Ride</strong>
-                <div class="mod-description">Přidává možnost jízdy taxíkem po městě.</div>
-            </li>
-            <li>
-                <strong>Ultimate Rezone Territory</strong>
-                <div class="mod-description">Rozšíření a úprava teritoriálních válek.</div>
-            </li>
-            <li>
-                <strong>Urbanize</strong>
-                <div class="mod-description">Zvětšuje městskou zástavbu a přidává nové budovy.</div>
-            </li>
-            <li>
-                <strong>Vados Peds Pack</strong>
-                <div class="mod-description">Balíček postav s HD modely a texturami.</div>
-            </li>
-            <li>
-                <strong>VResidence PC</strong>
-                <div class="mod-description">HD modely residencí v Las Venturas.</div>
-            </li>
-            <li>
-                <strong>Wheel Detach</strong>
-                <div class="mod-description">Přidává možnost odlomení kol při nehodě.</div>
-            </li>
-        </ul>
+    <div class="sidebar">
+        <a href="index.html">Domů</a>
+        <a href="modlist.html">Seznam módů</a>
+    </div>
+    <div class="content">
+        <h1>Soupis modů</h1>
+        <div class="container">
+            <ul>
+                <li>
+                    <strong>Armour</strong>
+                    <div class="mod-description">Armor je nyní vidět.</div>
+                </li>
+                <li>
+                    <strong>Atmosphere Interface Pack</strong>
+                    <div class="mod-description">Vylepšuje atmosféru hry s novým uživatelským rozhraním.</div>
+                </li>
+                <li>
+                    <strong>BSOR - American Dream</strong>
+                    <div class="mod-description">Realistické silniční vozidla v HD kvalitě.</div>
+                </li>
+                <li>
+                    <strong>CJ Remade</strong>
+                    <div class="mod-description">Nový model pro CJ s vylepšenými detaily a texturami.</div>
+                </li>
+                <li>
+                    <strong>Clever Trams</strong>
+                    <div class="mod-description">Inteligentní tramvaje s realistickým pohybem po městě.</div>
+                </li>
+                <li>
+                    <strong>ColorMod</strong>
+                    <div class="mod-description">Upravuje barevné schéma hry pro realistický vzhled.</div>
+                </li>
+                <li>
+                    <strong>cz font fix</strong>
+                    <div class="mod-description">Opravuje chyby českého fontu ve hře.</div>
+                </li>
+                <li>
+                    <strong>DriveMod</strong>
+                    <div class="mod-description">Zlepšuje fyziku jízdy a chování vozidel.</div>
+                </li>
+                <li>
+                    <strong>EnhancerFX</strong>
+                    <div class="mod-description">Vizuální efekty vylepšující osvětlení a stíny.</div>
+                </li>
+                <li>
+                    <strong>Faithful Weapons Pack - Lite</strong>
+                    <div class="mod-description">Zbraně věrné originálním modelům v HD kvalitě.</div>
+                </li>
+                <li>
+                    <strong>Faithful Weapons Sounds Pack</strong>
+                    <div class="mod-description">Vylepšuje zvuky zbraní pro realističtější zážitek.</div>
+                </li>
+                <li>
+                    <strong>Fake_Interior</strong>
+                    <div class="mod-description">Falešné interiéry pro vytvoření dojmu otevřených budov.</div>
+                </li>
+                <li>
+                    <strong>HD GTA Aircraft</strong>
+                    <div class="mod-description">HD modely všech letadel ve hře.</div>
+                </li>
+                <li>
+                    <strong>HD GTA Bikes</strong>
+                    <div class="mod-description">HD modely všech motorek ve hře.</div>
+                </li>
+                <li>
+                    <strong>HD GTA Vehicles</strong>
+                    <div class="mod-description">HD modely všech vozidel ve hře.</div>
+                </li>
+                <li>
+                    <strong>HD Water tower</strong>
+                    <div class="mod-description">HD model vodní věže ve městě.</div>
+                </li>
+                <li>
+                    <strong>HQ Cutscenes cars</strong>
+                    <div class="mod-description">Vysokokvalitní modely aut ve filmových scénách.</div>
+                </li>
+                <li>
+                    <strong>Insult Mod</strong>
+                    <div class="mod-description">Přidává nové urážky a dialogy mezi NPC postavami.</div>
+                </li>
+                <li>
+                    <strong>Interiors Retextured Mipmapped</strong>
+                    <div class="mod-description">HD retexturace interiérů s mipmappingem.</div>
+                </li>
+                <li>
+                    <strong>LightSunnyGraphics</strong>
+                    <div class="mod-description">Vylepšuje grafiku během slunečného počasí.</div>
+                </li>
+                <li>
+                    <strong>MixSets</strong>
+                    <div class="mod-description">Konfigurační nástroj pro úpravu různých aspektů hry.</div>
+                </li>
+                <li>
+                    <strong>New Sex Shop V2</strong>
+                    <div class="mod-description">Vylepšený model a interiér obchodu se sexuálními pomůckami.</div>
+                </li>
+                <li>
+                    <strong>OE Mod</strong>
+                    <div class="mod-description">Optimalizace a rozšíření pro lepší herní zážitek.</div>
+                </li>
+                <li>
+                    <strong>Original Peds Vary</strong>
+                    <div class="mod-description">Rozmanitější NPC postavy s různými modely.</div>
+                </li>
+                <li>
+                    <strong>PedFuncs</strong>
+                    <div class="mod-description">Funkce a chování NPC postav vylepšené pro realismus.</div>
+                </li>
+                <li>
+                    <strong>PedSkills</strong>
+                    <div class="mod-description">Vylepšení dovedností a schopností NPC postav.</div>
+                </li>
+                <li>
+                    <strong>Pre-lighting Fixes Pack</strong>
+                    <div class="mod-description">Oprava předosvětlení modelů a textur.</div>
+                </li>
+                <li>
+                    <strong>propsremake</strong>
+                    <div class="mod-description">HD modely různých předmětů ve hře.</div>
+                </li>
+                <li>
+                    <strong>Ragdoll Bullet Physics</strong>
+                    <div class="mod-description">Realistická fyzika postav při zásahu kulkou.</div>
+                </li>
+                <li>
+                    <strong>Real Traffic Fix</strong>
+                    <div class="mod-description">Oprava a vylepšení dopravní situace ve hře.</div>
+                </li>
+                <li>
+                    <strong>Retextured LaPetrol</strong>
+                    <div class="mod-description">HD retexturace čerpací stanice La Petrol.</div>
+                </li>
+                <li>
+                    <strong>retextur 1</strong>
+                    <div class="mod-description">První sada HD retexturace různých objektů ve hře.</div>
+                </li>
+                <li>
+                    <strong>retextur 2</strong>
+                    <div class="mod-description">Druhá sada HD retexturace různých objektů ve hře.</div>
+                </li>
+                <li>
+                    <strong>retextur 3</strong>
+                    <div class="mod-description">Třetí sada HD retexturace různých objektů ve hře.</div>
+                </li>
+                <li>
+                    <strong>retextur 4</strong>
+                    <div class="mod-description">Čtvrtá sada HD retexturace různých objektů ve hře.</div>
+                </li>
+                <li>
+                    <strong>SA Cutscene Characters (ESRGAN)</strong>
+                    <div class="mod-description">HD modely postav pro filmové scény.</div>
+                </li>
+                <li>
+                    <strong>Skin Tweaks</strong>
+                    <div class="mod-description">Úpravy a vylepšení skinů postav.</div>
+                </li>
+                <li>
+                    <strong>Taxi Ride</strong>
+                    <div class="mod-description">Přidává možnost jízdy taxíkem po městě.</div>
+                </li>
+                <li>
+                    <strong>Ultimate Rezone Territory</strong>
+                    <div class="mod-description">Rozšíření a úprava teritoriálních válek.</div>
+                </li>
+                <li>
+                    <strong>Urbanize</strong>
+                    <div class="mod-description">Zvětšuje městskou zástavbu a přidává nové budovy.</div>
+                </li>
+                <li>
+                    <strong>Vados Peds Pack</strong>
+                    <div class="mod-description">Balíček postav s HD modely a texturami.</div>
+                </li>
+                <li>
+                    <strong>VResidence PC</strong>
+                    <div class="mod-description">HD modely residencí v Las Venturas.</div>
+                </li>
+                <li>
+                    <strong>Wheel Detach</strong>
+                    <div class="mod-description">Přidává možnost odlomení kol při nehodě.</div>
+                </li>
+            </ul>
+        </div>
     </div>
     <footer>
         <p>© 2024 Republic of Lords. Všechna práva vyhrazena.</p>
