@@ -111,14 +111,12 @@
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
-            justify-content: center; /* Center the items horizontally */
         }
 
         .carousel-item {
-            min-width: 33.333%;
+            min-width: 100%;
             box-sizing: border-box;
             padding: 10px;
-            transition: transform 0.3s ease;
         }
 
         .carousel img {
@@ -129,7 +127,7 @@
         }
 
         .carousel-item.active img {
-            transform: scale(1.05); /* Slightly larger for the active image */
+            transform: scale(1.05);
             border: 4px solid yellow;
         }
 
@@ -274,86 +272,86 @@
                 <div class="carousel-item"><img src="Screenshot 13.png" alt="Screenshot 13" onclick="openModal(this)"></div>
             </div>
             <div class="carousel-control">
-                <button id="prevBtn">&#10094;</button>
-                <button id="nextBtn">&#10095;</button>
+                <button onclick="prevSlide()">&#10094;</button>
+                <button onclick="nextSlide()">&#10095;</button>
             </div>
         </div>
 
-        <!-- Modalní okno -->
-        <div id="myModal" class="modal">
+        <div id="modal" class="modal">
             <span class="close" onclick="closeModal()">&times;</span>
             <div class="modal-content">
-                <img id="modalImg" src="">
+                <img id="modal-img" src="" alt="Modal Image">
                 <div class="modal-control">
-                    <button id="prevModalBtn">&#10094;</button>
-                    <button id="nextModalBtn">&#10095;</button>
+                    <button onclick="prevSlideModal()">&#10094;</button>
+                    <button onclick="nextSlideModal()">&#10095;</button>
                 </div>
             </div>
         </div>
-        
-        <footer>
-            <p>© 2024 Republic of Lords. Všechna práva vyhrazena.</p>
-        </footer>
     </div>
 
+    <footer>
+        <p>&copy; 2024 Republic of Lords. Všechna práva vyhrazena.</p>
+    </footer>
+
     <script>
+        const carouselInner = document.querySelector('.carousel-inner');
+        const carouselItems = document.querySelectorAll('.carousel-item');
         let currentIndex = 0;
 
-        function showSlides() {
-            const slides = document.querySelectorAll('.carousel-item');
-            const totalSlides = slides.length;
-            const slideWidth = slides[0].offsetWidth;
-            const carouselWidth = document.querySelector('.carousel').offsetWidth;
-            const visibleItems = 3;
-            const offset = -currentIndex * (slideWidth / visibleItems);
-
-            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
-
-            // Reset previous active class
-            slides.forEach(slide => slide.classList.remove('active'));
-            // Add active class to current item
-            slides[currentIndex].classList.add('active');
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carouselInner.style.transform = `translateX(${offset}%)`;
         }
 
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            const slides = document.querySelectorAll('.carousel-item');
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlides();
-        });
+        function nextSlide() {
+            if (currentIndex < carouselItems.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            updateCarousel();
+        }
 
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            const slides = document.querySelectorAll('.carousel-item');
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlides();
-        });
+        function prevSlide() {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = carouselItems.length - 1;
+            }
+            updateCarousel();
+        }
 
-        document.getElementById('nextModalBtn').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % document.querySelectorAll('.carousel-item img').length;
-            showModalSlides();
-        });
-
-        document.getElementById('prevModalBtn').addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + document.querySelectorAll('.carousel-item img').length) % document.querySelectorAll('.carousel-item img').length;
-            showModalSlides();
-        });
-
-        function openModal(img) {
-            document.getElementById("myModal").style.display = "block";
-            currentIndex = Array.from(document.querySelectorAll('.carousel-item img')).indexOf(img);
-            showModalSlides();
+        function openModal(imgElement) {
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            modal.style.display = 'block';
+            modalImg.src = imgElement.src;
+            currentIndex = Array.from(carouselItems).indexOf(imgElement.parentElement);
         }
 
         function closeModal() {
-            document.getElementById("myModal").style.display = "none";
+            const modal = document.getElementById('modal');
+            modal.style.display = 'none';
         }
 
-        function showModalSlides() {
-            const modalImgs = document.querySelectorAll('.carousel-item img');
-            document.getElementById("modalImg").src = modalImgs[currentIndex].src;
+        function nextSlideModal() {
+            if (currentIndex < carouselItems.length - 1) {
+                currentIndex++;
+            } else {
+                currentIndex = 0;
+            }
+            document.getElementById('modal-img').src = carouselItems[currentIndex].querySelector('img').src;
         }
 
-        // Initialize the carousel
-        showSlides();
+        function prevSlideModal() {
+            if (currentIndex > 0) {
+                currentIndex--;
+            } else {
+                currentIndex = carouselItems.length - 1;
+            }
+            document.getElementById('modal-img').src = carouselItems[currentIndex].querySelector('img').src;
+        }
     </script>
 </body>
 </html>
+
