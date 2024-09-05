@@ -44,7 +44,7 @@
 
         .sidebar iframe {
             width: 100%;
-            height: 200px;
+            height: 200px; /* Nastavení výšky přehrávače */
             border: none;
             border-radius: 5px;
             margin-top: 20px;
@@ -119,10 +119,11 @@
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
+            margin-left: 16.666%; /* Adjust for centering */
         }
 
         .carousel-item {
-            min-width: 100%;
+            min-width: 33.333%;
             box-sizing: border-box;
             padding: 10px;
         }
@@ -305,12 +306,15 @@
     </div>
 
     <script>
-        let currentIndex = 0; // Index pro carousel a modální okno
+        let currentIndex = 1; // Změněno na 1, aby se první obrázek posunul doprava
 
         function showSlides() {
             const slides = document.querySelectorAll('.carousel-item');
             const totalSlides = slides.length;
-            document.querySelector('.carousel-inner').style.transform = `translateX(-${currentIndex * 100}%)`;
+            const slideWidth = slides[0].offsetWidth;
+            const offset = -currentIndex * slideWidth + (slideWidth / 2);
+
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
 
             // Reset previous active class
             slides.forEach(slide => slide.classList.remove('active'));
