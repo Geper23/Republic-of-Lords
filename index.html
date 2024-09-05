@@ -111,13 +111,14 @@
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
+            justify-content: center; /* Center the items horizontally */
         }
 
         .carousel-item {
             min-width: 33.333%;
             box-sizing: border-box;
-            transition: transform 0.3s ease;
             padding: 10px;
+            transition: transform 0.3s ease;
         }
 
         .carousel img {
@@ -128,7 +129,7 @@
         }
 
         .carousel-item.active img {
-            transform: scale(1.1);
+            transform: scale(1.05); /* Slightly larger for the active image */
             border: 4px solid yellow;
         }
 
@@ -302,7 +303,9 @@
             const slides = document.querySelectorAll('.carousel-item');
             const totalSlides = slides.length;
             const slideWidth = slides[0].offsetWidth;
-            const offset = -currentIndex * slideWidth;
+            const carouselWidth = document.querySelector('.carousel').offsetWidth;
+            const visibleItems = 3;
+            const offset = -currentIndex * (slideWidth / visibleItems);
 
             document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
 
