@@ -318,63 +318,95 @@
     </div>
 
     <script>
-        let currentIndex = 1; // Změněno na 1, aby se první obrázek posunul doprava
+    let currentIndex = 1; // Změněno na 1, aby se první obrázek posunul doprava
 
-        function showSlides() {
-            const slides = document.querySelectorAll('.carousel-item');
-            const totalSlides = slides.length;
-            const slideWidth = slides[0].offsetWidth;
-            const offset = -currentIndex * slideWidth + (slideWidth / 2);
+    function showSlides() {
+        const slides = document.querySelectorAll('.carousel-item');
+        const totalSlides = slides.length;
+        const slideWidth = slides[0].offsetWidth;
+        const offset = -currentIndex * slideWidth + (slideWidth / 2);
 
-            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
+        document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
 
-            // Reset previous active class
-            slides.forEach(slide => slide.classList.remove('active'));
-            // Add active class to current item
-            slides[currentIndex].classList.add('active');
-        }
+        // Reset previous active class
+        slides.forEach(slide => slide.classList.remove('active'));
+        // Add active class to current item
+        slides[currentIndex].classList.add('active');
+    }
 
-        document.getElementById('nextBtn').addEventListener('click', () => {
-            const slides = document.querySelectorAll('.carousel-item');
-            currentIndex = (currentIndex + 1) % slides.length;
-            showSlides();
-        });
-
-        document.getElementById('prevBtn').addEventListener('click', () => {
-            const slides = document.querySelectorAll('.carousel-item');
-            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-            showSlides();
-        });
-
-        document.getElementById('nextModalBtn').addEventListener('click', () => {
-            const modalImgs = document.querySelectorAll('.carousel-item img');
-            currentIndex = (currentIndex + 1) % modalImgs.length;
-            showModalSlides();
-        });
-
-        document.getElementById('prevModalBtn').addEventListener('click', () => {
-            const modalImgs = document.querySelectorAll('.carousel-item img');
-            currentIndex = (currentIndex - 1 + modalImgs.length) % modalImgs.length;
-            showModalSlides();
-        });
-
-        function openModal(img) {
-            document.getElementById("myModal").style.display = "block";
-            currentIndex = Array.from(document.querySelectorAll('.carousel-item img')).indexOf(img);
-            showModalSlides();
-        }
-
-        function closeModal() {
-            document.getElementById("myModal").style.display = "none";
-        }
-
-        function showModalSlides() {
-            const modalImgs = document.querySelectorAll('.carousel-item img');
-            document.getElementById("modalImg").src = modalImgs[currentIndex].src;
-        }
-
-        // Initialize the carousel
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        const slides = document.querySelectorAll('.carousel-item');
+        currentIndex = (currentIndex + 1) % slides.length;
         showSlides();
-    </script>
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        const slides = document.querySelectorAll('.carousel-item');
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        showSlides();
+    });
+
+    document.getElementById('nextModalBtn').addEventListener('click', () => {
+        const modalImgs = document.querySelectorAll('.carousel-item img');
+        currentIndex = (currentIndex + 1) % modalImgs.length;
+        showModalSlides();
+    });
+
+    document.getElementById('prevModalBtn').addEventListener('click', () => {
+        const modalImgs = document.querySelectorAll('.carousel-item img');
+        currentIndex = (currentIndex - 1 + modalImgs.length) % modalImgs.length;
+        showModalSlides();
+    });
+
+    function openModal(img) {
+        document.getElementById("myModal").style.display = "block";
+        currentIndex = Array.from(document.querySelectorAll('.carousel-item img')).indexOf(img);
+        showModalSlides();
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    function showModalSlides() {
+        const modalImgs = document.querySelectorAll('.carousel-item img');
+        document.getElementById("modalImg").src = modalImgs[currentIndex].src;
+    }
+
+    // Initialize the carousel
+    showSlides();
+
+    // Přidání funkce pro tažení myší
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    const slider = document.querySelector('.carousel-inner');
+
+    slider.addEventListener('mousedown', (e) => {
+        isDown = true;
+        slider.classList.add('active');
+        startX = e.pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('mouseleave', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mouseup', () => {
+        isDown = false;
+        slider.classList.remove('active');
+    });
+
+    slider.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2; // Nastav vzdálenost, jak rychle bude slider reagovat
+        slider.scrollLeft = scrollLeft - walk;
+    });
+</script>
 </body>
 </html>
