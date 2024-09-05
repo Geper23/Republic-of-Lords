@@ -326,7 +326,7 @@
             const slideWidth = slides[0].offsetWidth;
             const offset = -currentIndex * slideWidth + (slideWidth / 2);
 
-            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
+            document.querySelector('.carousel-inner').style.transform = translateX(${offset}px);
 
             // Reset previous active class
             slides.forEach(slide => slide.classList.remove('active'));
