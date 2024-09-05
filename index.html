@@ -110,7 +110,7 @@
 
         .carousel-inner {
             display: flex;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease-in-out;
         }
 
         .carousel-item {
@@ -295,9 +295,9 @@
             const totalSlides = slides.length;
 
             if (currentIndex >= totalSlides) {
-                currentIndex = totalSlides - 1;
+                currentIndex = 0; // Loop back to start
             } else if (currentIndex < 0) {
-                currentIndex = 0;
+                currentIndex = totalSlides - 1; // Loop back to end
             }
 
             const offset = -currentIndex * 100;
@@ -313,23 +313,33 @@
         }
 
         document.getElementById('nextBtn').addEventListener('click', () => {
-            currentIndex++;
-            showSlides();
+            const slides = document.querySelectorAll('.carousel-item');
+            if (currentIndex < slides.length - 1) {
+                currentIndex++;
+                showSlides();
+            }
         });
 
         document.getElementById('prevBtn').addEventListener('click', () => {
-            currentIndex--;
-            showSlides();
+            if (currentIndex > 0) {
+                currentIndex--;
+                showSlides();
+            }
         });
 
         document.getElementById('nextModalBtn').addEventListener('click', () => {
-            currentIndex++;
-            showModalSlides();
+            const modalImgs = document.querySelectorAll('.carousel-item img');
+            if (currentIndex < modalImgs.length - 1) {
+                currentIndex++;
+                showModalSlides();
+            }
         });
 
         document.getElementById('prevModalBtn').addEventListener('click', () => {
-            currentIndex--;
-            showModalSlides();
+            if (currentIndex > 0) {
+                currentIndex--;
+                showModalSlides();
+            }
         });
 
         function openModal(img) {
