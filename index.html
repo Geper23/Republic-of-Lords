@@ -110,24 +110,25 @@
 
         .carousel-inner {
             display: flex;
-            transition: transform 0.5s ease-in-out;
+            transition: transform 0.5s ease;
         }
 
         .carousel-item {
             min-width: 33.333%;
             box-sizing: border-box;
+            position: relative;
         }
 
         .carousel img {
             width: 100%;
             height: auto;
             border-radius: 10px;
-            transition: transform 0.5s ease, border 0.5s ease;
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
 
         .carousel-item.active img {
-            transform: scale(1.1);
-            border: 5px solid #f39c12; /* Žlutá barva */
+            transform: scale(1.2);
+            border: 5px solid #f39c12; /* Žlutá barva pro zvýraznění */
         }
 
         .carousel-control {
@@ -244,49 +245,44 @@
         <div class="container">
             <h2>O Modpacku</h2>
             <p>Republic of Lords - Realistic pack 1.0 je rozsáhlý modpack pro GTA San Andreas, který zachovává věrnost původní hře, ale zároveň ji v mnoha aspektech vylepšuje. Tento modpack mění spoustu textur ve hře a všechny jsou v HD kvalitě, přičemž zůstávají věrné originálu.</p>
-            <p>Všechna auta, motorky, letadla a lodě jsou přepracované do HD verze, ale stále si zachovávají svůj původní vzhled. V modpacku najdete i vylepšené textury pro města, přírodu, interiéry a další aspekty hry.</p>
-        </div>
-
-        <div class="container">
-            <h2 class="gallery-title">Galerie</h2>
-            <div class="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active"><img src="Screenshot 1.png" alt="Screenshot 1" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 2.png" alt="Screenshot 2" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 3.png" alt="Screenshot 3" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 4.png" alt="Screenshot 4" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 5.png" alt="Screenshot 5" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 6.png" alt="Screenshot 6" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 7.png" alt="Screenshot 7" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 8.png" alt="Screenshot 8" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 9.png" alt="Screenshot 9" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 10.png" alt="Screenshot 10" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 11.png" alt="Screenshot 11" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 12.png" alt="Screenshot 12" onclick="openModal(this)"></div>
-                    <div class="carousel-item"><img src="Screenshot 13.png" alt="Screenshot 13" onclick="openModal(this)"></div>
-                </div>
-                <div class="carousel-control">
-                    <button id="prevBtn">&#10094;</button>
-                    <button id="nextBtn">&#10095;</button>
-                </div>
-            </div>
-
-            <!-- Modalní okno -->
-            <div id="myModal" class="modal">
-                <span class="close" onclick="closeModal()">&times;</span>
-                <div class="modal-content">
-                    <img id="modalImg" src="">
-                    <div class="modal-control">
-                        <button id="prevModalBtn">&#10094;</button>
-                        <button id="nextModalBtn">&#10095;</button>
-                    </div>
-                </div>
-            </div>
+            <p>Všechna auta, motorky, letadla a lodě jsou přepracované do HD verze, ale stále si zachovávají svůj původní vzhled. Modpack také upravuje chování policie, přidává nové gangy a vylepšuje chování NPC. Kompletně všechny postavy, které potkáš na ulici, mají nové HD modely, které jsou věrné originálu. Dále jsou předělané zvuky aut a motocyklů, což přidává na realistickém zážitku. Provoz na silnici je intenzivnější a rovněž je zvýšen výskyt NPC postav, což činí hru živější.</p>
+            <p>Navíc je v modpacku funkční taxi služba, která ti umožní rychlý přesun po městě. Zbraně byly kompletně přetexturovány a jejich zvuky jsou mnohem realističtější, což přispívá k lepšímu hernímu zážitku.</p>
             
-            <footer>
-                <p>© 2024 Republic of Lords. Všechna práva vyhrazena.</p>
-            </footer>
+            <a href="modlist.html" class="button">Zobrazit seznam modů</a>
+
+            <h2>Stáhnout Modpack</h2>
+            <p>Modpack můžete stáhnout z následujícího odkazu: <a href="https://mega.nz/folder/QoZ3jIAR#_OBsRP4v3Xyggh9IVAeZxQ" class="button">Stáhnout</a></p>
         </div>
+        
+        <div class="carousel">
+            <div class="gallery-title">Galerie</div>
+            <div class="carousel-inner">
+                <div class="carousel-item"><img src="Screenshot 1.jpg" alt="Screenshot 1" onclick="openModal(this)"></div>
+                <div class="carousel-item"><img src="Screenshot 2.png" alt="Screenshot 2" onclick="openModal(this)"></div>
+                <div class="carousel-item"><img src="Screenshot 3.jpg" alt="Screenshot 3" onclick="openModal(this)"></div>
+                <!-- Přidejte více obrázků dle potřeby -->
+            </div>
+            <div class="carousel-control">
+                <button id="prevBtn">❮</button>
+                <button id="nextBtn">❯</button>
+            </div>
+        </div>
+        
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <img id="modalImg" src="" alt="Modal Image">
+            </div>
+            <div class="modal-control">
+                <button id="prevModalBtn">❮</button>
+                <button id="nextModalBtn">❯</button>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 Republic of Lords. Všechna práva vyhrazena.</p>
+        </footer>
     </div>
 
     <script>
@@ -296,10 +292,12 @@
             const slides = document.querySelectorAll('.carousel-item');
             const totalSlides = slides.length;
 
+            if (totalSlides === 0) return;
+
             if (currentIndex >= totalSlides) {
-                currentIndex = 0; // Loop back to start
+                currentIndex = totalSlides - 1;
             } else if (currentIndex < 0) {
-                currentIndex = totalSlides - 1; // Loop back to end
+                currentIndex = 0;
             }
 
             const offset = -currentIndex * 100;
@@ -372,7 +370,7 @@
             highlightCurrentSlide();
         }
 
-        // Initialize the carousel
+        // Inicializace carouselu
         showSlides();
     </script>
 </body>
