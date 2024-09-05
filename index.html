@@ -114,7 +114,7 @@
         }
 
         .carousel-item {
-            min-width: 100%;
+            min-width: 33.333%;
             box-sizing: border-box;
             padding: 10px;
         }
@@ -127,7 +127,7 @@
         }
 
         .carousel-item.active img {
-            transform: scale(1.05);
+            transform: scale(1.1);
             border: 4px solid yellow;
         }
 
@@ -272,86 +272,86 @@
                 <div class="carousel-item"><img src="Screenshot 13.png" alt="Screenshot 13" onclick="openModal(this)"></div>
             </div>
             <div class="carousel-control">
-                <button onclick="prevSlide()">&#10094;</button>
-                <button onclick="nextSlide()">&#10095;</button>
+                <button id="prevBtn">&#10094;</button>
+                <button id="nextBtn">&#10095;</button>
             </div>
         </div>
 
-        <div id="modal" class="modal">
+        <!-- Modalní okno -->
+        <div id="myModal" class="modal">
             <span class="close" onclick="closeModal()">&times;</span>
             <div class="modal-content">
-                <img id="modal-img" src="" alt="Modal Image">
+                <img id="modalImg" src="">
                 <div class="modal-control">
-                    <button onclick="prevSlideModal()">&#10094;</button>
-                    <button onclick="nextSlideModal()">&#10095;</button>
+                    <button id="prevModalBtn">&#10094;</button>
+                    <button id="nextModalBtn">&#10095;</button>
                 </div>
             </div>
         </div>
+        
+        <footer>
+            <p>© 2024 Republic of Lords. Všechna práva vyhrazena.</p>
+        </footer>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Republic of Lords. Všechna práva vyhrazena.</p>
-    </footer>
-
     <script>
-        const carouselInner = document.querySelector('.carousel-inner');
-        const carouselItems = document.querySelectorAll('.carousel-item');
         let currentIndex = 0;
 
-        function updateCarousel() {
-            const offset = -currentIndex * 100;
-            carouselInner.style.transform = `translateX(${offset}%)`;
+        function showSlides() {
+            const slides = document.querySelectorAll('.carousel-item');
+            const totalSlides = slides.length;
+            const slideWidth = slides[0].offsetWidth;
+            const offset = -currentIndex * slideWidth;
+
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
+
+            // Reset previous active class
+            slides.forEach(slide => slide.classList.remove('active'));
+            // Add active class to current item
+            slides[currentIndex].classList.add('active');
         }
 
-        function nextSlide() {
-            if (currentIndex < carouselItems.length - 1) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-            updateCarousel();
-        }
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            const slides = document.querySelectorAll('.carousel-item');
+            currentIndex = (currentIndex + 1) % slides.length;
+            showSlides();
+        });
 
-        function prevSlide() {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = carouselItems.length - 1;
-            }
-            updateCarousel();
-        }
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            const slides = document.querySelectorAll('.carousel-item');
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            showSlides();
+        });
 
-        function openModal(imgElement) {
-            const modal = document.getElementById('modal');
-            const modalImg = document.getElementById('modal-img');
-            modal.style.display = 'block';
-            modalImg.src = imgElement.src;
-            currentIndex = Array.from(carouselItems).indexOf(imgElement.parentElement);
+        document.getElementById('nextModalBtn').addEventListener('click', () => {
+            const modalImgs = document.querySelectorAll('.carousel-item img');
+            currentIndex = (currentIndex + 1) % modalImgs.length;
+            showModalSlides();
+        });
+
+        document.getElementById('prevModalBtn').addEventListener('click', () => {
+            const modalImgs = document.querySelectorAll('.carousel-item img');
+            currentIndex = (currentIndex - 1 + modalImgs.length) % modalImgs.length;
+            showModalSlides();
+        });
+
+        function openModal(img) {
+            document.getElementById("myModal").style.display = "block";
+            currentIndex = Array.from(document.querySelectorAll('.carousel-item img')).indexOf(img);
+            showModalSlides();
         }
 
         function closeModal() {
-            const modal = document.getElementById('modal');
-            modal.style.display = 'none';
+            document.getElementById("myModal").style.display = "none";
         }
 
-        function nextSlideModal() {
-            if (currentIndex < carouselItems.length - 1) {
-                currentIndex++;
-            } else {
-                currentIndex = 0;
-            }
-            document.getElementById('modal-img').src = carouselItems[currentIndex].querySelector('img').src;
+        function showModalSlides() {
+            const modalImgs = document.querySelectorAll('.carousel-item img');
+            document.getElementById("modalImg").src = modalImgs[currentIndex].src;
         }
 
-        function prevSlideModal() {
-            if (currentIndex > 0) {
-                currentIndex--;
-            } else {
-                currentIndex = carouselItems.length - 1;
-            }
-            document.getElementById('modal-img').src = carouselItems[currentIndex].querySelector('img').src;
-        }
+        // Initialize the carousel
+        showSlides();
     </script>
 </body>
 </html>
-
