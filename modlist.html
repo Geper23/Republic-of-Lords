@@ -66,6 +66,7 @@
         ul {
             list-style: none;
             padding: 0;
+            counter-reset: mod-counter; /* Resetování čítače */
         }
 
         li {
@@ -76,12 +77,12 @@
             border-radius: 5px;
             font-size: 1.2em;
             text-align: left;
-            padding-left: 40px;
+            padding-left: 50px;
         }
 
         li::before {
-            content: counter(li-counter) ".";
-            counter-increment: li-counter;
+            content: counter(mod-counter) ". "; /* Použití čítače */
+            counter-increment: mod-counter; /* Inkrementace čítače */
             position: absolute;
             left: 10px;
             top: 10px;
@@ -146,7 +147,6 @@
                 <li><strong>HQ Cutscenes Cars</strong><div class="mod-description">Vysoké rozlišení aut během cutscén.</div></li>
                 <li><strong>Insult Mod</strong><div class="mod-description">Umožňuje NPC reagovat na hráče s urážkami.</div></li>
                 <li><strong>LS Beach House Part 1</strong><div class="mod-description">Nové textury pro plážové domy v Los Santos.</div></li>
-                <li><strong>MixSets</strong><div class="mod-description">Nastavení různých aspektů hry pomocí mixování parametrů.</div></li>
                 <li><strong>New Sex Shop V2</strong><div class="mod-description">Vylepšená verze sex shopu v San Andreas.</div></li>
                 <li><strong>Pre-lighting Fixes Pack</strong><div class="mod-description">Opravy předběžného osvětlení ve hře.</div></li>
                 <li><strong>Real Traffic Fix</strong><div class="mod-description">Opravy a vylepšení chování provozu ve hře.</div></li>
