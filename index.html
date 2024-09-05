@@ -15,6 +15,7 @@
             background-size: cover;
             background-position: center;
             display: flex;
+            overflow-x: hidden;
         }
 
         .sidebar {
@@ -114,12 +115,15 @@
             margin: auto;
             overflow: visible;
             margin-top: 30px;
+            position: relative;
         }
 
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
             margin-left: 16.666%; /* Adjust for centering */
+            white-space: nowrap;
+            overflow: hidden;
         }
 
         .carousel-item {
