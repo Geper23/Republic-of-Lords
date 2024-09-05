@@ -111,12 +111,12 @@
         .carousel-inner {
             display: flex;
             transition: transform 0.5s ease;
+            margin-left: 16.666%; /* Adjust for centering */
         }
 
         .carousel-item {
             min-width: 33.333%;
             box-sizing: border-box;
-            transition: transform 0.3s ease;
             padding: 10px;
         }
 
@@ -128,7 +128,7 @@
         }
 
         .carousel-item.active img {
-            transform: scale(1.1); /* Zvětšení obrázku o 10% */
+            transform: scale(1.1);
             border: 4px solid yellow;
         }
 
@@ -289,20 +289,20 @@
                 </div>
             </div>
         </div>
-
+        
         <footer>
             <p>© 2024 Republic of Lords. Všechna práva vyhrazena.</p>
         </footer>
     </div>
 
     <script>
-        let currentIndex = 0;
+        let currentIndex = 1; // Změněno na 1, aby se první obrázek posunul doprava
 
         function showSlides() {
             const slides = document.querySelectorAll('.carousel-item');
             const totalSlides = slides.length;
             const slideWidth = slides[0].offsetWidth;
-            const offset = -currentIndex * slideWidth;
+            const offset = -currentIndex * slideWidth + (slideWidth / 2);
 
             document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
 
@@ -325,12 +325,14 @@
         });
 
         document.getElementById('nextModalBtn').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % document.querySelectorAll('.carousel-item img').length;
+            const modalImgs = document.querySelectorAll('.carousel-item img');
+            currentIndex = (currentIndex + 1) % modalImgs.length;
             showModalSlides();
         });
 
         document.getElementById('prevModalBtn').addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + document.querySelectorAll('.carousel-item img').length) % document.querySelectorAll('.carousel-item img').length;
+            const modalImgs = document.querySelectorAll('.carousel-item img');
+            currentIndex = (currentIndex - 1 + modalImgs.length) % modalImgs.length;
             showModalSlides();
         });
 
