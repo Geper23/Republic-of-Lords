@@ -23,7 +23,9 @@
             height: 100%;
             top: 0;
             left: 0;
-            overflow: auto;
+            display: flex;  /* Flexbox přidán pro vertikální zarovnání */
+            flex-direction: column;  /* Vertikální směr */
+            justify-content: flex-start; /* Obsah zarovnán na začátek */
         }
 
         .sidebar a {
@@ -34,6 +36,7 @@
             border-radius: 5px;
             margin-bottom: 10px;
             font-size: 18px;
+            text-align: center; /* Centrování textu */
         }
 
         .sidebar a:hover {
@@ -41,7 +44,7 @@
         }
 
         .video-container {
-            margin-top: 20px; /* Vzdálenost od odkazu */
+            margin-top: auto; /* Vzdálenost od odkazu */
         }
 
         .video-container iframe {
