@@ -295,13 +295,13 @@
     </div>
 
     <script>
-        let currentIndex = 0;
+        let currentIndex = 1; // Změněno na 1, aby se první obrázek posunul doprava
 
         function showSlides() {
             const slides = document.querySelectorAll('.carousel-item');
             const totalSlides = slides.length;
             const slideWidth = slides[0].offsetWidth;
-            const offset = -currentIndex * slideWidth;
+            const offset = -currentIndex * slideWidth + (slideWidth / 2);
 
             document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
 
