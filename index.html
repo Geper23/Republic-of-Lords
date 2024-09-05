@@ -116,12 +116,20 @@
         .carousel-item {
             min-width: 33.333%;
             box-sizing: border-box;
+            transition: transform 0.3s ease;
+            padding: 10px;
         }
 
         .carousel img {
             width: 100%;
             height: auto;
             border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .carousel-item.active img {
+            transform: scale(1.1);
+            border: 4px solid yellow;
         }
 
         .carousel-control {
@@ -292,30 +300,37 @@
 
         function showSlides() {
             const slides = document.querySelectorAll('.carousel-item');
-            if (currentIndex >= slides.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = slides.length - 1;
+            const totalSlides = slides.length;
+            const slideWidth = slides[0].offsetWidth;
+            const offset = -currentIndex * slideWidth;
 
-            const offset = -currentIndex * 100;
-            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}%)`;
+            document.querySelector('.carousel-inner').style.transform = `translateX(${offset}px)`;
+
+            // Reset previous active class
+            slides.forEach(slide => slide.classList.remove('active'));
+            // Add active class to current item
+            slides[currentIndex].classList.add('active');
         }
 
         document.getElementById('nextBtn').addEventListener('click', () => {
-            currentIndex++;
+            const slides = document.querySelectorAll('.carousel-item');
+            currentIndex = (currentIndex + 1) % slides.length;
             showSlides();
         });
 
         document.getElementById('prevBtn').addEventListener('click', () => {
-            currentIndex--;
+            const slides = document.querySelectorAll('.carousel-item');
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
             showSlides();
         });
 
         document.getElementById('nextModalBtn').addEventListener('click', () => {
-            currentIndex++;
+            currentIndex = (currentIndex + 1) % document.querySelectorAll('.carousel-item img').length;
             showModalSlides();
         });
 
         document.getElementById('prevModalBtn').addEventListener('click', () => {
-            currentIndex--;
+            currentIndex = (currentIndex - 1 + document.querySelectorAll('.carousel-item img').length) % document.querySelectorAll('.carousel-item img').length;
             showModalSlides();
         });
 
@@ -331,9 +346,6 @@
 
         function showModalSlides() {
             const modalImgs = document.querySelectorAll('.carousel-item img');
-            if (currentIndex >= modalImgs.length) currentIndex = 0;
-            if (currentIndex < 0) currentIndex = modalImgs.length - 1;
-
             document.getElementById("modalImg").src = modalImgs[currentIndex].src;
         }
 
