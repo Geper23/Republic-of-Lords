@@ -12,12 +12,11 @@
             margin: 0;
             padding: 0;
             color: white;
-            text-align: center;
             display: flex;
         }
         
         .sidebar {
-            width: 200px;
+            width: 300px; /* Zvětšení šířky bočního panelu */
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             position: fixed;
@@ -41,10 +40,20 @@
             background-color: rgba(0, 0, 0, 0.8);
         }
 
+        .video-container {
+            margin-top: 20px; /* Vzdálenost od odkazu */
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 200px;
+            border: none;
+        }
+
         .content {
-            margin-left: 220px;
+            margin-left: 320px; /* Zvětšení okraje pro obsah */
             padding: 20px;
-            width: calc(100% - 240px);
+            width: calc(100% - 340px); /* Zvětšení šířky obsahu */
         }
 
         .container {
@@ -108,30 +117,18 @@
             background-color: rgba(0, 0, 0, 0.7);
             color: white;
         }
-
-        .video-container {
-            margin: 20px auto;
-            width: 80%;
-            max-width: 800px;
-        }
-
-        .video-container iframe {
-            width: 100%;
-            height: 450px;
-            border: none;
-        }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <a href="index.html">Domů</a>
         <a href="modlist.html">Seznam módů</a>
-    </div>
-    <div class="content">
-        <h1>Soupis modů</h1>
         <div class="video-container">
             <iframe src="https://www.youtube.com/embed/mE5QQdVj9Fk" allowfullscreen></iframe>
         </div>
+    </div>
+    <div class="content">
+        <h1>Soupis modů</h1>
         <div class="container">
             <ul>
                 <li><strong>SilentPatch</strong><div class="mod-description">Opravuje různé problémy s hrou a zlepšuje její stabilitu.</div></li>
@@ -163,7 +160,7 @@
                 <li><strong>Faithful Weapons Pack - Lite</strong><div class="mod-description">Zbraňový balíček s lepšími modely, ale optimalizovaný pro výkon.</div></li>
                 <li><strong>GTA V Tuning Parts</strong><div class="mod-description">Přidává tuningové součásti z GTA V do hry San Andreas.</div></li>
                 <li><strong>HD GTA Aircraft</strong><div class="mod-description">Vylepšené modely letadel ve vysokém rozlišení.</div></li>
-                <li><strong>HD GTA Bikes</strong><div class="mod-description">Vylepšené modely motorek ve vysokém rozlišení.</div></li>
+                <li><strong>HD Motorbikes</strong><div class="mod-description">Vylepšené modely motorek ve vysokém rozlišení.</div></li>
                 <li><strong>HD Water Tower</strong><div class="mod-description">Vylepšený model a textury vodárenské věže.</div></li>
                 <li><strong>HQ Cutscenes Cars</strong><div class="mod-description">Vysoké rozlišení modelů automobilů z cutscén.</div></li>
                 <li><strong>New Beach House Textures</strong><div class="mod-description">Nové textury pro plážové domy v Los Santos.</div></li>
