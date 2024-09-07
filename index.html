@@ -47,6 +47,18 @@
             transform: scale(1.2); /* Zvětšení při hoveru */
             text-decoration: none; /* Text nebude podtržen ani při hoveru */
         }
+
+        .sidebar a:hover::after {
+            content: '→'; /* Zde se vloží symbol šipky nebo jakýkoliv znak */
+            position: absolute;
+            right: -20px; /* Umístění šipky vpravo od odkazu */
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #f39c12;
+            transition: right 0.3s ease;
+            right: 0; /* Při hoveru se šipka posune vedle textu */
+        }     
         
         /* Změna barvy odkazu Instalace na červenou */
         .sidebar a[href="instalace.html"] {
