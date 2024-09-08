@@ -270,6 +270,22 @@
             text-shadow: 1px 1px black;
             margin-bottom: 20px;
         }
+
+        .progress-bar-container {
+            width: 100%;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: none;
+        }
+
+        .progress-bar {
+            width: 0;
+            height: 20px;
+            background-color: #f39c12;
+            border-radius: 5px;
+            transition: width 10s ease;
+        }
     </style>
 </head>
 <body>
@@ -294,6 +310,10 @@
 
             <h2>Stáhnout Modpack</h2>
             <p>Modpack můžete stáhnout z následujícího odkazu: <a href="https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg" class="button">Stáhnout</a></p>
+            <!-- Načítací lišta pro stahování -->
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
         </div>
         
         <div class="carousel">
@@ -415,15 +435,29 @@
                 });
             });
         // Přidání posluchače události kliknutí na tlačítko 'Stáhnout'
-        document.querySelector('.button[href="https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg"]').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            var audio = new Audio('sounds/gta-san-andreas-abertura-oficial.mp3');
-            audio.play();
-            setTimeout(function() {
-                window.location.href = 'https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg';
-            }, 10000); // Čekat 10 sekund (10000 ms)
-        });
+        document.addEventListener('DOMContentLoaded', function() {
+    var downloadButton = document.querySelector('.button[href="https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg"]');
+    var progressBarContainer = document.querySelector('.progress-bar-container');
+    var progressBar = document.querySelector('.progress-bar');
+    
+    downloadButton.addEventListener('click', function(event) {
+        event.preventDefault(); // Zabraňte výchozímu chování odkazu
+        var audio = new Audio('sounds/gta-san-andreas-abertura-oficial.mp3');
+        audio.play();
+        
+        // Zobrazit načítací lištu
+        progressBarContainer.style.display = 'block';
+        
+        // Zahájit animaci načítací lišty
+        progressBar.style.width = '100%';
+        
+        // Po 10 sekundách pokračovat na odkaz ke stažení
+        setTimeout(function() {
+            window.location.href = 'https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg';
+        }, 10000); // 10 sekund (10000 ms)
     });
+});
+
     </script>
 </body>
 </html>
