@@ -414,7 +414,16 @@
                     audio.play();
                 });
             });
+        // Přidání posluchače události kliknutí na tlačítko 'Stáhnout'
+        document.querySelector('.button[href="https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg"]').addEventListener('click', function(event) {
+            event.preventDefault(); // Prevent default link behavior
+            var audio = new Audio('sounds/gta-san-andreas-abertura-oficial.mp3');
+            audio.play();
+            setTimeout(function() {
+                window.location.href = 'https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg';
+            }, 10000); // Čekat 10 sekund (10000 ms)
         });
+    });
     </script>
 </body>
 </html>
