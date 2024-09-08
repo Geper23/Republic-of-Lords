@@ -17,16 +17,14 @@
         }
         
         .sidebar {
-            width: 200px; /* Zvětšení šířky bočního panelu */
+            width: 200px;
             background-color: rgba(0, 0, 0, 0.7);
             padding: 20px;
             position: fixed;
             height: 100%;
             top: 0;
             left: 0;
-            display: flex;  /* Flexbox přidán pro vertikální zarovnání */
-            flex-direction: column;  /* Vertikální směr */
-            justify-content: flex-start; /* Obsah zarovnán na začátek */
+            overflow: auto;
         }
 
         .sidebar a {
@@ -37,11 +35,26 @@
             border-radius: 5px;
             margin-bottom: 10px;
             font-size: 18px;
-            text-align: center; /* Centrování textu */
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease; /* Přidán přechod pro transformaci */
         }
 
         .sidebar a:hover {
             background-color: rgba(0, 0, 0, 0.8);
+            color: #e67e22; /* Změna barvy textu při přejetí */
+            transform: scale(1.2); /* Zvětšení při hoveru */
+            text-decoration: none; /* Text nebude podtržen ani při hoveru */
+        }
+
+        .sidebar a:hover::after {
+            content: '→'; /* Zde se vloží symbol šipky nebo jakýkoliv znak */
+            position: absolute;
+            right: -20px; /* Umístění šipky vpravo od odkazu */
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 18px;
+            color: #f39c12;
+            transition: right 0.3s ease;
+            right: 0; /* Při hoveru se šipka posune vedle textu */
         }
 
         /* Změna barvy odkazu Instalace na červenou */
