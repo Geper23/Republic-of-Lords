@@ -406,14 +406,13 @@
         // Initialize the carousel
         showSlides();
 
-        // Přidání zvuku při najetí na odkazy v levé liště
-        const sidebarLinks = document.querySelectorAll('.sidebar a');
-        const audio = new Audio('https://raw.githubusercontent.com/tvujgithub/repository/sounds/gta-menu.mp3');
-
-        sidebarLinks.forEach(link => {
-            link.addEventListener('mouseenter', () => {
-                audio.currentTime = 0; // Resetuje zvuk na začátek
-                audio.play();
+        document.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('.sidebar a');
+            links.forEach(function(link) {
+                link.addEventListener('mouseover', function() {
+                    var audio = new Audio('sounds/gta-menu.mp3');
+                    audio.play();
+                });
             });
         });
     </script>
