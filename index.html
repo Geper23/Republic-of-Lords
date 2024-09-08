@@ -88,6 +88,7 @@
         }
 
         .button {
+            position: relative;
             background-color: #f39c12;
             color: black;
             padding: 15px 25px;
@@ -100,6 +101,7 @@
             border: none;
             cursor: pointer;
             overflow: hidden; /* Needed for the pseudo-element animation */
+            vertical-align: middle;
         }
 
        .button::after {
@@ -166,6 +168,13 @@
             max-width: 100%;
         }
 
+        .content p {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+        }
+        
         .carousel-item {
             min-width: 33.333%;
             box-sizing: border-box;
