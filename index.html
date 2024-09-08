@@ -406,6 +406,23 @@
         // Initialize the carousel
         showSlides();
 
+        // Funkce pro přehrávání zvuku a následné přesměrování
+        function playSoundAndRedirect(url) {
+            var audio = new Audio('sounds/gta-san-andreas-abertura-oficial.mp3');
+            audio.play();
+
+            // Po 10 sekundách přesměruj
+            setTimeout(function() {
+                window.location.href = url;
+            }, 10000); // 10 000 ms = 10 s
+        }
+
+        // Přidání události na kliknutí na tlačítko
+        document.getElementById('downloadBtn').addEventListener('click', function(event) {
+            event.preventDefault(); // Zamez kliknutí na odkaz před přehráním zvuku
+            playSoundAndRedirect(this.href);
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             var links = document.querySelectorAll('.sidebar a');
             links.forEach(function(link) {
