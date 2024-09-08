@@ -142,6 +142,17 @@
             text-align: center;
         }
     </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var links = document.querySelectorAll('.sidebar a');
+            links.forEach(function(link) {
+                link.addEventListener('mouseover', function() {
+                    var audio = new Audio('sounds/gta-menu.mp3');
+                    audio.play();
+                });
+            });
+        });
+    </script>
 </head>
 <body>
     <div class="sidebar">
