@@ -270,6 +270,36 @@
             text-shadow: 1px 1px black;
             margin-bottom: 20px;
         }
+
+         /* Ztmavovací overlay */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none; /* Skryto ve výchozím stavu */
+            justify-content: center;
+            align-items: center;
+            z-index: 9999; /* Před ostatním obsahem */
+        }
+
+        /* Načítací lišta */
+        .loader {
+            border: 16px solid #f3f3f3; /* Šedé pozadí */
+            border-top: 16px solid #f39c12; /* Oranžový okraj */
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Animace rotace */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body>
@@ -294,6 +324,9 @@
 
             <h2>Stáhnout Modpack</h2>
             <p>Modpack můžete stáhnout z následujícího odkazu: <a href="https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg" class="button">Stáhnout</a></p>
+             <!-- Ztmavovací overlay a načítací lišta -->
+        <div id="loadingOverlay" class="overlay">
+            <div class="loader"></div>
         </div>
         
         <div class="carousel">
@@ -423,7 +456,45 @@
                 window.location.href = 'https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg';
             }, 10000); // Čekat 10 sekund (10000 ms)
         });
-    });
+        document.addEventListener('DOMContentLoaded', function() {
+            var downloadButton = document.querySelector('.button[href="https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg"]');
+            var loadingOverlay = document.getElementById('loadingOverlay');
+
+            if (downloadButton) {
+                downloadButton.addEventListener('click', function(event) {
+                    event.preventDefault(); // Zabrání výchozímu chování odkazu
+
+                    var audio = new Audio('sounds/gta-san-andreas-abertura-oficial.mp3');
+                    audio.play().catch(function(error) {
+                        console.error("Zvuk nelze přehrát: ", error);
+                    });
+
+                    // Zobrazit overlay a načítací lištu
+                    if (loadingOverlay) {
+                        loadingOverlay.style.display = 'flex';
+                    }
+
+                    // Skrýt overlay po 10 sekundách a přesměrovat na odkaz
+                    setTimeout(function() {
+                        if (loadingOverlay) {
+                            loadingOverlay.style.display = 'none';
+                        }
+                        window.location.href = 'https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg';
+                    }, 10000); // 10 sekund (10000 ms)
+                });
+            } else {
+                console.error("Tlačítko stahování nebylo nalezeno.");
+            }
+
+            document.querySelectorAll('.sidebar a').forEach(function(link) {
+                link.addEventListener('mouseover', function() {
+                    var audio = new Audio('sounds/gta-menu.mp3');
+                    audio.play().catch(function(error) {
+                        console.error("Zvuk nelze přehrát: ", error);
+                    });
+                });
+            });
+        });
     </script>
 </body>
 </html>
