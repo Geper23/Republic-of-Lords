@@ -88,6 +88,7 @@
         }
 
         .button {
+            position: relative;
             background-color: #f39c12;
             color: black;
             padding: 15px 25px;
@@ -99,6 +100,23 @@
             border-radius: 10px;
             border: none;
             cursor: pointer;
+            overflow: hidden; /* Needed for the pseudo-element animation */
+        }
+
+       .button::after {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: -100%;
+           width: 100%;
+           height: 100%;
+           background-color: rgba(255, 255, 255, 0.5);
+           transition: left 10s;
+           z-index: 1;
+        }
+
+        .button.active::after {
+            left: 0;
         }
 
         .button:hover {
@@ -293,7 +311,7 @@
             <a href="modlist.html" class="button">Zobrazit seznam modů</a>
 
             <h2>Stáhnout Modpack</h2>
-            <p>Modpack můžete stáhnout z následujícího odkazu: <a href="https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg" class="button">Stáhnout</a></p>
+            <p>Modpack můžete stáhnout z následujícího odkazu: <a href="https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg" class="button" id="downloadButton">Stáhnout</a></p>
         </div>
         
         <div class="carousel">
@@ -404,26 +422,41 @@
         }
 
         // Initialize the carousel
-        showSlides();
+    showSlides();
 
-        document.addEventListener('DOMContentLoaded', function() {
-            var links = document.querySelectorAll('.sidebar a');
-            links.forEach(function(link) {
-                link.addEventListener('mouseover', function() {
-                    var audio = new Audio('sounds/gta-menu.mp3');
-                    audio.play();
-                });
+    document.addEventListener('DOMContentLoaded', function() {
+        var links = document.querySelectorAll('.sidebar a');
+        links.forEach(function(link) {
+            link.addEventListener('mouseover', function() {
+                var audio = new Audio('sounds/gta-menu.mp3');
+                audio.play();
             });
-        // Přidání posluchače události kliknutí na tlačítko 'Stáhnout'
-        document.querySelector('.button[href="https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg"]').addEventListener('click', function(event) {
-            event.preventDefault(); // Prevent default link behavior
-            var audio = new Audio('sounds/gta-san-andreas-abertura-oficial.mp3');
-            audio.play();
-            setTimeout(function() {
-                window.location.href = 'https://mega.nz/folder/cxpyGbzC#yUGe_HtL9lvrxRULbnJkOg';
-            }, 10000); // Čekat 10 sekund (10000 ms)
         });
+
+        // Přidání posluchače události kliknutí na tlačítko 'Stáhnout'
+        var downloadButton = document.getElementById('downloadButton');
+        if (downloadButton) {
+            downloadButton.addEventListener('click', function(event) {
+                event.preventDefault(); // Prevent default link behavior
+
+                // Start animation
+                downloadButton.classList.add('active');
+
+                // Play sound (optional)
+                var audio = new Audio('sounds/gta-san-andreas-abertura-oficial.mp3');
+                audio.play().catch(function(error) {
+                    console.error("Zvuk nelze přehrát: ", error);
+                });
+
+                // Redirect after 10 seconds
+                setTimeout(function() {
+                    window.location.href = downloadButton.href;
+                }, 10000); // 10 seconds (10000 ms)
+            });
+        } else {
+            console.error("Tlačítko stahování nebylo nalezeno.");
+        }
     });
-    </script>
+</script>
 </body>
 </html>
