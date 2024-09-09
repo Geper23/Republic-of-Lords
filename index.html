@@ -447,6 +447,12 @@
             downloadButton.addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent default link behavior
 
+                // Zastavte video
+                var iframe = document.querySelector('.sidebar iframe');
+                var iframeSrc = iframe.src;
+                iframe.src = ''; // Reset iframe src to stop the video
+                iframe.src = iframeSrc; // Reload iframe src to resume the video when it is played again
+
                 // Start animation
                 downloadButton.classList.add('active');
 
