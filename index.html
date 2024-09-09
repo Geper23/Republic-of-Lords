@@ -450,9 +450,13 @@
                 // Zastavte video
                 var iframe = document.querySelector('.sidebar iframe');
                 var iframeSrc = iframe.src;
-                iframe.src = ''; // Reset iframe src to stop the video
-                iframe.src = iframeSrc; // Reload iframe src to resume the video when it is played again
 
+                // Přidejte timestamp k src, aby se video opravdu pozastavilo
+                iframe.src = ''; // Reset iframe src to stop the video
+                setTimeout(function() {
+                    iframe.src = iframeSrc; // Reload iframe src to resume the video
+                }, 100); // Krátké zpoždění
+                
                 // Start animation
                 downloadButton.classList.add('active');
 
