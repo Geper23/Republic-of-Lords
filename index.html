@@ -447,15 +447,12 @@
             downloadButton.addEventListener('click', function(event) {
                 event.preventDefault(); // Prevent default link behavior
 
-                // Zastavte video
+                // Zastavte video tím, že ho ztlumíte
                 var iframe = document.querySelector('.sidebar iframe');
                 var iframeSrc = iframe.src;
+                var newSrc = iframeSrc.replace(/autoplay=1/, 'autoplay=0'); // Změna autoplay
 
-                // Přidejte timestamp k src, aby se video opravdu pozastavilo
-                iframe.src = ''; // Reset iframe src to stop the video
-                setTimeout(function() {
-                    iframe.src = iframeSrc; // Reload iframe src to resume the video
-                }, 100); // Krátké zpoždění
+                iframe.src = newSrc; // Zastavení přehrávače
                 
                 // Start animation
                 downloadButton.classList.add('active');
