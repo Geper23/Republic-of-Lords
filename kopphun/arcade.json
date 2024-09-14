@@ -1,0 +1,27 @@
+﻿{
+	"name": "KoppHun",
+	"version": "0.02",
+	"description": "LuvU",
+	"id": "",
+	"viewport-width": 854,
+	"viewport-height": 480,
+	"author": "",
+	"email": "",
+	"website": "",
+	"orientations": "any",
+	"c2version": "277",
+	"ife": false,
+	"used-plugins": [
+		"Audio",
+		"Particles",
+		"Sprite",
+		"Text",
+		"Touch"
+	],
+	"used-behaviors": [
+		"Car",
+		"Pathfinding",
+		"Physics",
+		"solid"
+	]
+}
